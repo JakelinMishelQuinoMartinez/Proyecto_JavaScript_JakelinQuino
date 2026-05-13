@@ -13,3 +13,65 @@
 }
 
 body{background-color: var(--gris-claro);}
+
+/*==================ENCABEZADO==================*/
+.header {
+    background-color: var(--blanco-mate);
+    font-size: 1.5rem;
+    color: var(--rojo-opaco);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+#logo_name {
+    justify-content: flex-start;
+}
+
+#perfil {
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+#log_out {
+    justify-content: flex-end;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.img-svg {
+    filter: invert(15%) sepia(95%) saturate(3932%) hue-rotate(346deg) brightness(50%) contrast(92%);
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logo {
+    height: 35px;
+    width: auto;
+}
+
+/* Pantallas menores a 700px */
+@media (max-width: 700px) {
+    .text_hide {display: none;}
+
+    .header {
+        padding: 0 10px; 
+        height: 60px;
+        font-size: 1rem;
+    }
+
+    #perfil {gap: 0;}
+}
