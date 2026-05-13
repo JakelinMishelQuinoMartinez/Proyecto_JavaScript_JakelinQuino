@@ -22,3 +22,15 @@ formulario.addEventListener("submit", (e) =>{
         alert("Correo o contraseña incorrectos\n      ¡Intente de nuevo!")
     }
 })
+
+//====================CERRAR SESIÓN===================
+
+//Referencias
+const cerrarSesion = document.getElementById("log_out")
+
+//Mostrar la card de iniciar sesión
+cerrarSesion.addEventListener("click", (e) => {
+    if (confirm("¿Está seguro de que quiere cerrar sesión?")) {
+        iniciarSecion.style.display = "flex";
+      }
+})
