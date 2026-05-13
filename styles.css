@@ -95,6 +95,7 @@ body{background-color: var(--gris-claro);}
     align-items: center;
 }
 
+/*==================OPCIONES==================*/
 #servicescontainer, #types_container, #status_container{
     justify-content: center;
     gap: 10px;
@@ -102,4 +103,68 @@ body{background-color: var(--gris-claro);}
     background-color: var(--gris-claro);
     border-radius: 10px;
     padding: 10px;
+}
+
+/*==================INICIAR SESIÓN==================*/
+.seccion {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.card-content {
+    background-color: var(--blanco-mate);
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px var(--gris-opaco);
+}
+
+.titulo_login { 
+    color: var(--gris-opaco); 
+    margin-bottom: 5px; }
+
+.parrafo_login { 
+    color: var(--gris-opaco); 
+    margin-bottom: 20px; 
+    font-size: 1rem; }
+
+#loginForm { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: left; }
+
+.formLabel { 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+    font-size: 1rem; 
+    color: var(--gris-opaco); }
+
+#loginForm input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--blanco-mate);
+    border-radius: 8px;
+    outline: none;
+}
+
+.btn-signin {
+    background-color: var(--rojo-opaco); 
+    color: var(--blanco-mate);
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
 }

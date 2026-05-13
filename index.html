@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- ENCABEZADO -->
     <header class="header">
         <div id="logo_name">
             <img class="logo" src="img/LogoAuto.png" alt="Logo">
@@ -24,7 +25,10 @@
         </div>
     </header>
 
+    <!-- MAIN -->
     <main class="main">
+
+        <!-- OPCIONES -->
         <div id="servicescontainer">
             <img class="img-svg" src="img/patch-plus.svg" alt="Más"> 
             <span class="opc text_hide"> Servicios de Parqueo</span>
@@ -37,6 +41,23 @@
             <img class="img-svg" src="img/coin.svg" alt="Moneda"> 
             <span class="opc text_hide"> Estados</span>
         </div>
+
+        <!-- INICIAR SESIÓN -->
+        <div id="log_in" class="seccion">
+            <div class="card-content">
+                <img class="logo" src="img/LogoAuto.png" alt="Logo">
+                <h2 class="titulo_login">Campus Parking</h2>
+                <p class="parrafo_login">Inicia sesión en tu cuenta</p>  
+                <form id="loginForm">
+                    <label class="formLabel">Email</label>
+                    <input id="email" type="email" placeholder="ejemplo@gmail.com" required>
+                    <label class="formLabel">Contraseña</label>
+                    <input id="password" type="password" placeholder="Ingresa tu contraseña" required>
+                    <button class="btn-signin" type="submit">Sign In</button>
+                </form>
+            </div>
+        </div>
+
     </main>
 
     <script src="main.js"></script>
