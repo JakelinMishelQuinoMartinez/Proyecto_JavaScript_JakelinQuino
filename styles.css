@@ -1,0 +1,15 @@
+:root{
+    --rojo-opaco: #800000;
+    --gris-opaco: #2e2e2d;
+    --gris-claro: #d5d7d8;
+    --verde-opaco: #006414;
+    --blanco-mate: #F4F4F4;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{background-color: var(--gris-claro);}
