@@ -194,3 +194,20 @@ body{background-color: var(--gris-claro);}
     font-size: 1rem;
     font-weight: bold;
 }
+
+#edit_profile{
+    display: none;
+}
+
+#profileForm { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: left; }
+
+#profileForm input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--blanco-mate);
+    border-radius: 8px;
+    outline: none;
+}

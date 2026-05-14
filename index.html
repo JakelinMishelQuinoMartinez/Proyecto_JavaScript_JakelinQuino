@@ -65,17 +65,18 @@
             <div class="card-content">
                 <h2 class="titulo_login">Editar Perfil</h2>
                 <p class="parrafo_login">Cambiar datos de usuario</p>
-                <form id="loginForm">
+                <form id="profileForm">
                     <label class="formLabel">Nombre de Usuario</label>
                     <input id="edit_username" type="text" placeholder="Ingresa tu nuevo nombre de usuario" required>
                     <label class="formLabel">Email</label>
                     <input id="edit_email" type="email" value="admin@campusparking.com" disabled>
                     <label class="formLabel">Contraseña</label>
                     <input id="edit_password" type="password" placeholder="Ingresa tu nueva contraseña">
+                    <label class="formLabel">Confirmar Contraseña</label>
+                    <input id="confirm_password" type="password" placeholder="Confirma tu nueva contraseña">
                     <div class="btn-contaier">
                         <button class="btn-signin" id="btn-save" type="submit">Guardar Cambios</button>
                         <button id="btn-cancel" type="button" >Cancelar</button>
-                    </div>
                     </div>
                 </form>
             </div>
