@@ -20,6 +20,7 @@
     border-collapse: collapse;
     margin-top: 20px;
     background: var(--blanco-mate);
+    min-width: 600px; 
 }
 
 .tabla-app th, .tabla-app td {
@@ -32,4 +33,28 @@
 .tabla-app th {
     background-color: var(--gris-opaco);
     color: var(--blanco-mate);
+}
+
+.espacio-contenido {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+/*Pantallas menores de 700px*/
+@media (max-width: 700px) {
+    .header-modal{font-size: 0.8rem;}
+
+    .tabla-app th, .tabla-app td {
+        padding: 8px 5px;
+        font-size: 0.85rem;
+    }
+
+    .tabla-app td .btn-signin {
+        display: block;
+        width: 100%;
+        margin: 4px 0;
+        padding: 6px;
+        font-size: 0.8rem;
+    }
 }
