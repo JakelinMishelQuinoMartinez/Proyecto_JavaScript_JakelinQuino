@@ -125,6 +125,7 @@ body{background-color: var(--gris-claro);}
 
 .opcion-btn{
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .opcion-btn:hover { 
@@ -241,4 +242,37 @@ body{background-color: var(--gris-claro);}
     border: 1px solid var(--blanco-mate);
     border-radius: 8px;
     outline: none;
+}
+
+/*====================MODALS===================*/
+
+#vistas-app {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contenido-blanco {
+    display: none;
+    background-color: var(--blanco-mate);
+    width: 95%;
+    max-width: 1200px;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease; 
+}
+
+.contenido-blanco.active {
+    display: block;
+}
+
+.titulo-seccion {
+    color: var(--rojo-opaco);
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

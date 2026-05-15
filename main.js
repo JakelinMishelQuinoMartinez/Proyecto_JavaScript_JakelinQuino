@@ -92,3 +92,22 @@ profileForm.addEventListener("submit", (e) => {
         profileForm.reset();
     }
 });
+
+//====================MODALS===================
+
+// Referencias
+const btnServicios = document.getElementById("servicescontainer");
+const btnTipos = document.getElementById("types_container");
+const btnEstados = document.getElementById("status_container");
+const todasLasVistas = document.querySelectorAll(".contenido-blanco");
+
+//Ocultar o mostrar modals
+function cambiarVista(idSeleccionado) {
+    todasLasVistas.forEach(vista => vista.classList.remove("active"));    
+    document.getElementById(idSeleccionado).classList.add("active");
+}
+
+// Eventos
+btnServicios.addEventListener("click", () => cambiarVista("modal-servicios"));
+btnTipos.addEventListener("click", () => cambiarVista("modal-tipos"));
+btnEstados.addEventListener("click", () => cambiarVista("modal-estados"));
