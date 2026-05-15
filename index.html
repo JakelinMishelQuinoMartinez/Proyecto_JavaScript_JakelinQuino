@@ -29,17 +29,19 @@
     <main class="main">
 
         <!-- OPCIONES -->
-        <div id="servicescontainer">
-            <img class="img-svg" src="img/patch-plus.svg" alt="Más"> 
-            <span class="opc text_hide"> Servicios de Parqueo</span>
-        </div>
-        <div id="types_container">
-            <img class="img-svg" src="img/car-front.svg" alt="Carro"> 
-            <span class="opc text_hide"> Tipos de Vehiculos </span>
-        </div>
-        <div id="status_container">
-            <img class="img-svg" src="img/coin.svg" alt="Moneda"> 
-            <span class="opc text_hide"> Estados</span>
+        <div class="menu-opciones">
+            <div id="servicescontainer" class="opcion-btn">
+                <img class="img-svg" src="img/patch-plus.svg" alt="Más"> 
+                <span class="opc text_hide">Servicios de Parqueo</span>
+            </div>
+            <div id="types_container" class="opcion-btn">
+                <img class="img-svg" src="img/car-front.svg" alt="Carro"> 
+                <span class="opc text_hide">Tipos de Vehiculos</span>
+            </div>
+            <div id="status_container" class="opcion-btn">
+                <img class="img-svg" src="img/coin.svg" alt="Moneda"> 
+                <span class="opc text_hide">Estados</span>
+            </div>
         </div>
 
         <!-- INICIAR SESIÓN -->
@@ -80,6 +82,30 @@
                     </div>
                 </form>
             </div>
+        </div>
+    
+        <!-- MODALS -->
+        <div id="vistas-app">
+            <!-- SERVICIOS -->
+            <section id="modal-servicios" class="contenido-blanco active">
+                <h2 class="titulo-seccion">Servicios de Parqueo</h2>
+                <hr>
+                <div class="espacio-contenido">
+                    <p>Contenido de Servicios en curso...</p>
+                </div>
+            </section>
+            <!-- TIPOS -->
+            <section id="modal-tipos" class="contenido-blanco">
+                <h2 class="titulo-seccion">Tipos de Vehículos</h2>
+                <hr>
+                <p>Listado de tipos de vehículos...</p>
+            </section>
+            <!-- ESTADOS -->
+            <section id="modal-estados" class="contenido-blanco">
+                <h2 class="titulo-seccion">Estados</h2>
+                <hr>
+                <p>Configuración de estados...</p>
+            </section>
         </div>
 
     </main>
