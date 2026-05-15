@@ -43,7 +43,7 @@
 
 /*Pantallas menores de 700px*/
 @media (max-width: 700px) {
-    .header-modal{font-size: 0.8rem;}
+    .titulo-seccion{font-size: 1rem;}
 
     .tabla-app th, .tabla-app td {
         padding: 8px 5px;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="vistas.css">
 </head>
 <body>
-    <!-- ENCABEZADO -->
+    <!-- ===== ENCABEZADO ===== -->
     <header class="header">
         <div id="logo_name">
             <img class="logo" src="img/LogoAuto.png" alt="Logo">
@@ -29,7 +29,7 @@
     <!-- MAIN -->
     <main class="main">
 
-        <!-- OPCIONES -->
+        <!-- ===== OPCIONES ===== -->
         <div class="menu-opciones">
             <div id="servicescontainer" class="opcion-btn">
                 <img class="img-svg" src="img/patch-plus.svg" alt="Más"> 
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <!-- INICIAR SESIÓN -->
+        <!-- ===== INICIAR SESIÓN ===== -->
         <div id="log_in" class="seccion">
             <div class="card-content">
                 <img class="logo" src="img/LogoAuto.png" alt="Logo">
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <!-- EDITAR PERFIL -->
+        <!-- ===== EDITAR PERFIL ===== -->
         <div id="edit_profile" class="seccion">
             <div class="card-content">
                 <h2 class="titulo_login">Editar Perfil</h2>
@@ -85,10 +85,10 @@
             </div>
         </div>
     
-        <!-- MODALS -->
+        <!-- ==========MODALS ========== -->
         <div id="vistas-app">
 
-            <!-- SERVICIOS -->
+            <!-- ===== SERVICIOS ===== -->
             <section id="modal-servicios" class="contenido-blanco active">
                 <div class="header-modal">
                     <h2 class="titulo-seccion">Servicio de Parqueo</h2>
@@ -113,7 +113,7 @@
                 </div>
             </section>
 
-            <!-- TIPOS -->
+            <!-- ===== TIPOS ===== -->
             <section id="modal-tipos" class="contenido-blanco">
                 <div class="header-modal">
                     <h2 class="titulo-seccion">Vehículos y Tarifas</h2>
@@ -135,12 +135,25 @@
                 </div>
             </section>
 
-            <!-- ESTADOS -->
+            <!-- ===== ESTADOS ===== -->
             <section id="modal-estados" class="contenido-blanco">
-                <h2 class="titulo-seccion">Estados</h2>
+                <h2 class="titulo-seccion">Historial de Salidas</h2>
                 <hr>
-                <p>Configuración de estados...</p>
+                <div class="espacio-contenido">
+                    <table class="tabla-app" id="tabla-historial">
+                        <thead>
+                            <tr>
+                                <th>Placa</th>
+                                <th>Entrada</th>
+                                <th>Salida</th>
+                                <th>Total Pagado</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </section>
+            
         </div>
 
     </main>
