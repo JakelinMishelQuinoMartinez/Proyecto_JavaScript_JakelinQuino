@@ -1,0 +1,35 @@
+:root{
+    --rojo-opaco: #800000;
+    --gris-opaco: #2e2e2d;
+    --gris-claro: #d5d7d8;
+    --verde-opaco: #006414;
+    --blanco-mate: #F4F4F4;
+}
+
+/*==========TABLAS==========*/
+
+.header-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tabla-app {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--blanco-mate);
+}
+
+.tabla-app th, .tabla-app td {
+    padding: 12px;
+    border-bottom: 1px solid var(--gris-claro);
+    text-align: center;
+    color: var(--gris-opaco);
+}
+
+.tabla-app th {
+    background-color: var(--gris-opaco);
+    color: var(--blanco-mate);
+}

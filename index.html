@@ -33,11 +33,11 @@
         <div class="menu-opciones">
             <div id="servicescontainer" class="opcion-btn">
                 <img class="img-svg" src="img/patch-plus.svg" alt="Más"> 
-                <span class="opc text_hide">Servicios de Parqueo</span>
+                <span class="opc text_hide">Servicio de Parqueo</span>
             </div>
             <div id="types_container" class="opcion-btn">
                 <img class="img-svg" src="img/car-front.svg" alt="Carro"> 
-                <span class="opc text_hide">Tipos de Vehiculos</span>
+                <span class="opc text_hide">Vehiculos y Tarifas</span>
             </div>
             <div id="status_container" class="opcion-btn">
                 <img class="img-svg" src="img/coin.svg" alt="Moneda"> 
@@ -87,14 +87,32 @@
     
         <!-- MODALS -->
         <div id="vistas-app">
+
             <!-- SERVICIOS -->
             <section id="modal-servicios" class="contenido-blanco active">
-                <h2 class="titulo-seccion">Servicios de Parqueo</h2>
+                <div class="header-modal">
+                    <h2 class="titulo-seccion">Servicio de Parqueo</h2>
+                    <button class="btn-signin" id="btn-registrar-entrada">Registrar entrada</button>
+                </div>
                 <hr>
                 <div class="espacio-contenido">
-                    <p>Contenido de Servicios en curso...</p>
+                    <table class="tabla-app" id="tabla-servicios">
+                        <thead>
+                            <tr>
+                                <th>Slot</th>
+                                <th>Vehículo</th>
+                                <th>Placa</th>
+                                <th>Propietario</th>
+                                <th>Entrada</th>
+                                <th>Tiempo</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
             </section>
+
             <!-- TIPOS -->
             <section id="modal-tipos" class="contenido-blanco">
                 <h2 class="titulo-seccion">Tipos de Vehículos</h2>
