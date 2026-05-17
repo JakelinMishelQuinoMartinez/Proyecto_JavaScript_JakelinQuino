@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const btnAgregarTarifa = document.getElementById('btn-agregar-tarifa');
 const modalTarifaForm = document.getElementById('modal-tarifa-form');
 const btnSaveTarifa = document.querySelector('#form-tarifa .btn-save');
-const btnCancel = document.getElementById('btnn-cancel');
+const btnCancelTarifa = document.getElementById('btnn-cancel');
+const formTarifa = document.getElementById('form-tarifa');
 const tarifaCodigoInput = document.getElementById('tarifa-codigo');
 const tarifaTipoInput = document.getElementById('tarifa-tipo');
 const tarifaMontoInput = document.getElementById('tarifa-monto');
@@ -37,6 +38,20 @@ btnSaveTarifa.addEventListener('click', (e) => {
     e.target.reset();
 });
 
+//Abrir formulario de registro de tarifa
+formTarifa.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nuevaTarifa = {
+        codigo: document.getElementById('tarifa-codigo').value.toUpperCase(),
+        tipo: document.getElementById('tarifa-tipo').value,
+        monto: parseFloat(document.getElementById('tarifa-monto').value)
+    };
+    tarifas.push(nuevaTarifa);
+    guardarYActualizar();
+    modalTarifaForm.style.display = 'none';
+    formTarifa.reset();
+});
+
 //Actualizar tabla de tarifas
 function actualizarTablaTarifas() {
     const tbody = document.querySelector('#tabla-tarifas tbody');
@@ -56,9 +71,9 @@ function actualizarTablaTarifas() {
 }
 
 //Cerrar modal de tarifas
-btnCancel.addEventListener("click", () => {
+btnCancelTarifa.addEventListener("click", () => {
     modalTarifaForm.style.display = "none";
-    formTarifa.reset(); 
+    formTarifa.reset();
 });
 
 //Eliminar tarifa
@@ -83,23 +98,36 @@ function poblarSelectTipos() {
 const btnRegistrarEntrada = document.getElementById('btn-registrar-entrada');
 const btnCerrarModalSlots = document.getElementById('btn-cancel-slots');
 const modalSlots = document.getElementById('modal-slots');
+const contenedorGrid = document.getElementById('contenedor-grid');
+const modalParkingForm = document.getElementById('modal-registro-parking');
+const formParking = document.getElementById('form-parking');
+const selectTipo = document.getElementById('select-tipo');
+const prefijoPlaca = document.getElementById('prefijo-placa');
+const btnCancelParking = document.getElementById('btn-cancel-parking');
 let servicios = JSON.parse(localStorage.getItem('servicios')) || [];
 const TOTAL_SLOTS = 20;
 
 //Mostrar slots disponibles
 btnRegistrarEntrada.addEventListener('click', () => {
-    const contenedor = document.getElementById('contenedor-grid');
-    contenedor.innerHTML = '';
+    contenedorGrid.innerHTML = '';
     const slotsOcupados = servicios.map(s => parseInt(s.slot));
     for(let i = 1; i <= TOTAL_SLOTS; i++) {
         const estaOcupado = slotsOcupados.includes(i);
         const div = document.createElement('div');
         div.className = `slot ${estaOcupado ? 'ocupado' : 'libre'}`;
         div.innerText = i;
-        if(!estaOcupado) div.onclick = () => abrirRegistro(i);   
-        contenedor.appendChild(div);
+        if(!estaOcupado) {
+            div.onclick = () => abrirRegistro(i);
+        }
+        contenedorGrid.appendChild(div);
     }
     modalSlots.style.display = 'flex';
+});
+
+//Cancelar registro de parking
+btnCancelParking.addEventListener('click', () => {
+    modalParkingForm.style.display = 'none';
+    formParking.reset();
 });
 
 //Cerrar modal de slots
