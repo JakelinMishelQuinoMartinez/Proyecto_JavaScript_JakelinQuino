@@ -63,8 +63,12 @@ function actualizarTablaTarifas() {
                 <td>${t.tipo}</td>
                 <td>Q${t.monto}</td>
                 <td>
-                    <button onclick="prepararEditarTarifa(${index})" class="btn-save" style="padding: 5px 10px; font-size:0.85rem;">Editar</button>
-                    <button onclick="eliminarTarifa(${index})" class="btn-signin" style="background:#333; padding: 5px 10px; font-size:0.85rem;">Eliminar</button>
+                    <button onclick="prepararEditarTarifa(${index})" class="btn-save" title="Editar Tarifa">
+                        <img class="img-btn-svg svg-blanco" src="img/pencil.svg" alt="Editar">
+                    </button>
+                    <button onclick="eliminarTarifa(${index})" class="btn-signin" style="background:var(--rojo-opaco);" title="Eliminar Tarifa">
+                        <img class="img-btn-svg svg-blanco" src="img/x-circle.svg" alt="Eliminar">
+                    </button>
                 </td>
             </tr>
         `;
@@ -207,9 +211,15 @@ function actualizarTablaServicios() {
                 <td>${horaEntrada}</td>
                 <td id="tiempo-${index}">0 min</td>
                 <td>
-                    <button onclick="finalizarServicio(${index})" class="btnRegistrar" style="background:var(--rojo-opaco); padding: 5px 10px; font-size:0.85rem;">Salida</button>
-                    <button onclick="prepararEditarParking(${index})" class="btn-save" style="padding: 5px 10px; font-size:0.85rem;">Editar</button>
-                    <button onclick="eliminarServicio(${index})" class="btn-nuevo" style="background:#333; padding: 5px 10px; font-size:0.85rem;">X</button>
+                    <button onclick="finalizarServicio(${index})" class="btnRegistrar" style="background:var(--verde-opaco);" title="Procesar Salida">
+                        <img class="img-btn-svg svg-blanco" src="img/check-circle.svg" alt="Salida">
+                    </button>
+                    <button onclick="prepararEditarParking(${index})" class="btn-save" title="Editar Registro" style="background:var(--gris-opaco);">
+                        <img class="img-btn-svg svg-blanco" src="img/pencil.svg" alt="Editar">
+                    </button>
+                    <button onclick="eliminarServicio(${index})" class="btn-nuevo" style="background:var(--rojo-opaco);" title="Eliminar Registro">
+                        <img class="img-btn-svg svg-blanco" src="img/x-circle.svg" alt="Eliminar">
+                    </button>
                 </td>
             </tr>
         `;
@@ -243,9 +253,10 @@ function finalizarServicio(index) {
     const entrada = new Date(s.entrada);
     const diffMs = salida - entrada;
     const diffHoras = Math.max(1, Math.ceil(diffMs / (1000 * 60 * 60))); 
-    const total = diffHoras * s.tarifa;
+    const total = diffHoras * s.tarifa;   
     if(confirm(`Salida de Placa: ${s.placa}\nTiempo aproximado: ${Math.floor(diffMs/60000)} min.\nTotal a Cobrar: Q${total}`)) {
         historialSalidas.push({
+            codigo: s.codigo,
             placa: s.placa,
             entrada: entrada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
             salida: salida.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -276,6 +287,7 @@ function actualizarTablaHistorial() {
     historialSalidas.forEach(h => {
         tbody.innerHTML += `
             <tr>
+                <td>${h.codigo}</td> 
                 <td>${h.placa}</td>
                 <td>${h.entrada}</td>
                 <td>${h.salida}</td>

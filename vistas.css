@@ -35,6 +35,22 @@
     color: var(--blanco-mate);
 }
 
+.tabla-app td button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px !important;
+    margin: 0 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.tabla-app td button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
 .espacio-contenido {
     width: 100%;
     overflow-x: auto;
@@ -168,4 +184,20 @@
     border-radius: 0 8px 8px 0;
     outline: none;
     text-transform: uppercase;
+}
+
+/* ===========ICONOS EN LOS BOTONES============== */
+
+.img-btn-svg {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.svg-blanco {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+}
+
+.svg-rojo {
+    filter: invert(15%) sepia(95%) saturate(3932%) hue-rotate(346deg) brightness(50%) contrast(92%);
 }
