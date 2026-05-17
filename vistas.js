@@ -198,6 +198,20 @@ function actualizarTablaServicios() {
     calcularTiemposActivos();
 }
 
+// Calcular tiempo activo de cada servicio
+function calcularTiemposActivos() {
+    servicios.forEach((s, index) => {
+        const el = document.getElementById(`tiempo-${index}`);
+        if(el) {
+            const minutos = Math.floor((new Date() - new Date(s.entrada)) / 60000);
+            el.innerText = `${minutos} min`;
+        }
+    });
+}
+
+// Intervalo que corre en segundo plano recalculando el tiempo en la tabla cada 10 segundos
+setInterval(calcularTiemposActivos, 10000);
+
 //Cerrar modal de slots
 btnCerrarModalSlots.addEventListener('click', () => {
     modalSlots.style.display = 'none';

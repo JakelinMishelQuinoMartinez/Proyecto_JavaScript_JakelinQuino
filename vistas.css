@@ -50,7 +50,7 @@
         font-size: 0.85rem;
     }
 
-    .tabla-app td .btn-signin {
+    .tabla-app td .btn-signin, .tabla-app td button {
         display: block;
         width: 100%;
         margin: 4px 0;
@@ -60,17 +60,20 @@
 }
 
 /*=========NUEVA TARIFA=========*/
-#form-tarifa { 
+#form-tarifa, #form-parking { 
     display: flex; 
     flex-direction: column; 
-    text-align: left; }
+    text-align: left; 
+}
 
-#form-tarifa input {
+#form-tarifa input, .input-app {
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid var(--blanco-mate);
+    border: 1px solid var(--gris-claro);
     border-radius: 8px;
     outline: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #btnn-cancel, .btn-cancel {
@@ -100,18 +103,7 @@
 
 /*=================SLOTS DISPONIBLES=================*/
 
-.btn-nuevo {
-    background-color: var(--rojo-opaco); 
-    color: var(--blanco-mate);
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.btnRegistrar {
+.btn-nuevo, .btnRegistrar {
     background-color: var(--rojo-opaco); 
     color: var(--blanco-mate);
     padding: 10px 15px;
@@ -153,6 +145,7 @@
 .slot:hover:not(.ocupado) { transform: scale(1.05); }
 
 /*=================FORMULARIO REGISTRO NUEVO VEHÍCULO=================*/
+
 .placa-input {
     display: flex;
     align-items: center;
@@ -175,18 +168,4 @@
     border-radius: 0 8px 8px 0;
     outline: none;
     text-transform: uppercase;
-}
-
-#form-parking{ 
-    display: flex; 
-    flex-direction: column; 
-    text-align: left;
-}
-
-#form-parking input {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid var(--blanco-mate);
-    border-radius: 8px;
-    outline: none;
 }
