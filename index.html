@@ -122,6 +122,7 @@
                 </div>
             </div>
 
+            <!-- ========= REGISTRAR ENTRADA DE PARQUEO ========= -->
             <div id="modal-registro-parking" class="seccion">
                 <div class="card-content">
                     <h3 id="titulo-registro">Registro de Entrada</h3>
@@ -139,6 +140,28 @@
                         <div class="btn-contaier">
                             <button type="submit" class="btn-save">Agregar</button>
                             <button type="button" class="btn-cancel" id="btn-cancel-parking">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ========= EDITAR REGISTRO DE PARQUEO ========= -->
+            <div id="modal-editar-parking" class="seccion">
+                <div class="card-content">
+                    <h3>Editar Registro de Parqueo</h3>
+                    <form id="form-editar-parking">
+                        <input type="hidden" id="edit-parking-index"> <label class="formLabel">Tipo de Vehículo</label>
+                        <select id="edit-parking-tipo" class="input-app" required></select>
+                        
+                        <label class="formLabel">Placa</label>
+                        <input type="text" id="edit-parking-placa" class="input-app" style="text-transform: uppercase;" required>
+                        
+                        <label class="formLabel">Nombre Propietario</label>
+                        <input type="text" id="edit-parking-propietario" class="input-app" required>
+                        
+                        <div class="btn-contaier">
+                            <button type="submit" class="btn-save">Actualizar</button>
+                            <button type="button" class="btn-cancel" id="btn-cancel-edit-parking">Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -166,6 +189,7 @@
                 </div>
             </section>
 
+            <!-- ========= NUEVA TARIFA ========= -->
             <div id="modal-tarifa-form" class="seccion">
                 <div class="card-content">
                     <h3>Configurar Tarifa</h3>
@@ -184,6 +208,7 @@
                 </div>
             </div>
 
+            <!-- ========= EDITAR TIPO Y TARIFA ========= -->
             <div id="modal-editar-tarifa" class="seccion">
                 <div class="card-content">
                     <h3>Editar Tipo y Tarifa</h3>

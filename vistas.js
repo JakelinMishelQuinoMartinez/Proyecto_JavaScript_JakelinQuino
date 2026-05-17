@@ -207,8 +207,9 @@ function actualizarTablaServicios() {
                 <td>${horaEntrada}</td>
                 <td id="tiempo-${index}">0 min</td>
                 <td>
-                    <button onclick="finalizarServicio(${index})" class="btnRegistrar" style="background:var(--verde-opaco); padding: 5px 10px;">Salida</button>
-                    <button onclick="eliminarServicio(${index})" class="btn-nuevo" style="background:#333; padding: 5px 10px;">X</button>
+                    <button onclick="finalizarServicio(${index})" class="btnRegistrar" style="background:var(--rojo-opaco); padding: 5px 10px; font-size:0.85rem;">Salida</button>
+                    <button onclick="prepararEditarParking(${index})" class="btn-save" style="padding: 5px 10px; font-size:0.85rem;">Editar</button>
+                    <button onclick="eliminarServicio(${index})" class="btn-nuevo" style="background:#333; padding: 5px 10px; font-size:0.85rem;">X</button>
                 </td>
             </tr>
         `;
