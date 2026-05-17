@@ -60,3 +60,29 @@ btnCancel.addEventListener("click", () => {
     btnSaveTarifa.reset();
 });
 
+//Eliminar tarifa
+function eliminarTarifa(index) {
+    if(confirm("¿Seguro que desea eliminar esta tarifa?")) {
+        tarifas.splice(index, 1);
+        guardarYActualizar();
+    }
+}
+
+//======================SERVICIOS=====================
+
+//Referencias
+const btnRegistrarEntrada = document.getElementById('btn-registrar-entrada');
+const btnCerrarModalSlots = document.getElementById('btn-cancel-slots');
+const modalSlots = document.getElementById('modal-slots');
+let servicios = JSON.parse(localStorage.getItem('servicios')) || [];
+
+//Mostrar slots
+btnRegistrarEntrada.addEventListener('click', () => {
+    modalSlots.style.display = 'flex';
+});
+
+//Cerrar modal de slots
+btnCerrarModalSlots.addEventListener('click', () => {
+    modalSlots.style.display = 'none';
+});
+

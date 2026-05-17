@@ -92,7 +92,7 @@
             <section id="modal-servicios" class="contenido-blanco active">
                 <div class="header-modal">
                     <h2 class="titulo-seccion">Servicio de Parqueo</h2>
-                    <button class="btn-signin" id="btn-registrar-entrada">Registrar entrada</button>
+                    <button class="btnRegistrar" id="btn-registrar-entrada">Registrar entrada</button>
                 </div>
                 <hr>
                 <div class="espacio-contenido">
@@ -113,11 +113,19 @@
                 </div>
             </section>
 
+            <div id="modal-slots" class="seccion">
+                <div class="card-content large">
+                    <h3>Seleccione un slot disponible</h3>
+                    <div class="grid-slots" id="contenedor-grid"></div>
+                    <button class="btn-cancelar-modal" id="btn-cancel-slots">Cancelar</button>
+                </div>
+            </div>
+            
             <!-- ===== TIPOS Y TARIFAS ===== -->
             <section id="modal-tipos" class="contenido-blanco">
                 <div class="header-modal">
                     <h2 class="titulo-seccion">Vehículos y Tarifas</h2>
-                    <button class="btn-signin" id="btn-agregar-tarifa">Nuevo Tipo</button>
+                    <button class="btn-nuevo" id="btn-agregar-tarifa">Nuevo Tipo</button>
                 </div>
                 <hr>
                 <div class="espacio-contenido">
