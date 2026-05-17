@@ -23,10 +23,6 @@ btnAgregarTarifa.addEventListener('click', () => {
     modalTarifaForm.style.display = 'flex';
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarTablaTarifas();
-});
-
 //Agregar nueva tarifa
 btnSaveTarifa.addEventListener('click', (e) => {
     e.preventDefault();
@@ -62,7 +58,7 @@ function actualizarTablaTarifas() {
 //Cerrar modal de tarifas
 btnCancel.addEventListener("click", () => {
     modalTarifaForm.style.display = "none";
-    btnSaveTarifa.reset();
+    formTarifa.reset(); 
 });
 
 //Eliminar tarifa
@@ -73,6 +69,14 @@ function eliminarTarifa(index) {
     }
 }
 
+//Seleccionar tipos de tarifa para el formulario de registro
+function poblarSelectTipos() {
+    selectTipo.innerHTML = '<option value="">Seleccione...</option>';
+    tarifas.forEach(t => {
+        selectTipo.innerHTML += `<option value="${t.tipo}">${t.tipo}</option>`;
+    });
+}
+
 //======================SERVICIOS=====================
 
 //Referencias
@@ -80,14 +84,10 @@ const btnRegistrarEntrada = document.getElementById('btn-registrar-entrada');
 const btnCerrarModalSlots = document.getElementById('btn-cancel-slots');
 const modalSlots = document.getElementById('modal-slots');
 let servicios = JSON.parse(localStorage.getItem('servicios')) || [];
-
-//Mostrar slots
-btnRegistrarEntrada.addEventListener('click', () => {
-    modalSlots.style.display = 'flex';
-});
+const TOTAL_SLOTS = 20;
 
 //Mostrar slots disponibles
-btnRegistrarEntrada.onclick = () => {
+btnRegistrarEntrada.addEventListener('click', () => {
     const contenedor = document.getElementById('contenedor-grid');
     contenedor.innerHTML = '';
     const slotsOcupados = servicios.map(s => parseInt(s.slot));
@@ -100,7 +100,7 @@ btnRegistrarEntrada.onclick = () => {
         contenedor.appendChild(div);
     }
     modalSlots.style.display = 'flex';
-};
+});
 
 //Cerrar modal de slots
 btnCerrarModalSlots.addEventListener('click', () => {

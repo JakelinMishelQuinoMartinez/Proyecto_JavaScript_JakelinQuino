@@ -121,6 +121,28 @@
                     <button class="btn-cancelar-modal" id="btn-cancel-slots">Cancelar</button>
                 </div>
             </div>
+
+            <div id="modal-registro-parking" class="seccion">
+                <div class="card-content">
+                    <h3 id="titulo-registro">Registro de Entrada</h3>
+                    <form id="form-parking">
+                        <input type="hidden" id="input-slot">
+                        <label class="formLabel">Tipo de Vehículo</label>
+                        <select id="select-tipo" class="input-app" required></select>
+                        <label class="formLabel">Placa (Guatemala)</label>
+                        <div class="placa-input">
+                            <span id="prefijo-placa">?</span>
+                            <input type="text" id="input-placa" placeholder="ABC123" maxlength="6" required>
+                        </div>
+                        <label class="formLabel">Nombre Propietario</label>
+                        <input type="text" id="input-propietario" class="input-app" required>
+                        <div class="btn-contaier">
+                            <button type="submit" class="btn-save">Agregar</button>
+                            <button type="button" class="btn-cancel" id="btn-cancel-parking">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             
             <!-- ===== TIPOS Y TARIFAS ===== -->
             <section id="modal-tipos" class="contenido-blanco">
