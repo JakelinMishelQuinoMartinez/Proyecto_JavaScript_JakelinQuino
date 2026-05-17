@@ -1,5 +1,10 @@
 //=======================TARIFAS=======================
 
+//Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarTablaTarifas();
+});
+
 //Referencias
 const btnAgregarTarifa = document.getElementById('btn-agregar-tarifa');
 const modalTarifaForm = document.getElementById('modal-tarifa-form');
@@ -80,6 +85,22 @@ let servicios = JSON.parse(localStorage.getItem('servicios')) || [];
 btnRegistrarEntrada.addEventListener('click', () => {
     modalSlots.style.display = 'flex';
 });
+
+//Mostrar slots disponibles
+btnRegistrarEntrada.onclick = () => {
+    const contenedor = document.getElementById('contenedor-grid');
+    contenedor.innerHTML = '';
+    const slotsOcupados = servicios.map(s => parseInt(s.slot));
+    for(let i = 1; i <= TOTAL_SLOTS; i++) {
+        const estaOcupado = slotsOcupados.includes(i);
+        const div = document.createElement('div');
+        div.className = `slot ${estaOcupado ? 'ocupado' : 'libre'}`;
+        div.innerText = i;
+        if(!estaOcupado) div.onclick = () => abrirRegistro(i);   
+        contenedor.appendChild(div);
+    }
+    modalSlots.style.display = 'flex';
+};
 
 //Cerrar modal de slots
 btnCerrarModalSlots.addEventListener('click', () => {
