@@ -284,3 +284,33 @@ function actualizarTablaHistorial() {
         `;
     });
 }
+
+// ==========================================
+//    LÓGICA PARA EDICIÓN DE REGISTROS
+// ==========================================
+
+// --- EDICIÓN DE TARIFAS ---
+function prepararEditarTarifa(index) {
+    const t = tarifas[index];
+    document.getElementById('edit-tarifa-index').value = index;
+    document.getElementById('edit-tarifa-tipo').value = t.tipo;
+    document.getElementById('edit-tarifa-codigo').value = t.codigo;
+    document.getElementById('edit-tarifa-monto').value = t.monto;
+    document.getElementById('modal-editar-tarifa').style.display = 'flex';
+}
+
+//Enviar formulario de edición de tarifa
+document.getElementById('form-editar-tarifa').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const index = document.getElementById('edit-tarifa-index').value;
+    tarifas[index].tipo = document.getElementById('edit-tarifa-tipo').value;
+    tarifas[index].codigo = document.getElementById('edit-tarifa-codigo').value.toUpperCase();
+    tarifas[index].monto = parseFloat(document.getElementById('edit-tarifa-monto').value);
+    guardarYActualizar();
+    document.getElementById('modal-editar-tarifa').style.display = 'none';
+});
+
+//Cerrar modal de edición de tarifa
+document.getElementById('btn-cancel-edit-tarifa').addEventListener('click', () => {
+    document.getElementById('modal-editar-tarifa').style.display = 'none';
+});
