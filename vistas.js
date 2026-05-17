@@ -1,6 +1,6 @@
 //=======================TARIFAS=======================
 
-//Inicialización
+// --- INICIALIZACIÓN AL CARGAR LA APP ---
 document.addEventListener('DOMContentLoaded', () => {
     actualizarTablaTarifas();
 });
@@ -216,4 +216,29 @@ setInterval(calcularTiemposActivos, 10000);
 btnCerrarModalSlots.addEventListener('click', () => {
     modalSlots.style.display = 'none';
 });
+
+//Finalizar servicio y calcular cobro
+function finalizarServicio(index) {
+    const s = servicios[index];
+    const salida = new Date();
+    const entrada = new Date(s.entrada);
+    const diffMs = salida - entrada;
+    const diffHoras = Math.max(1, Math.ceil(diffMs / (1000 * 60 * 60))); 
+    const total = diffHoras * s.tarifa;
+    if(confirm(`Salida de Placa: ${s.placa}\nTiempo aproximado: ${Math.floor(diffMs/60000)} min.\nTotal a Cobrar: Q${total}`)) {
+        historialSalidas.push({
+            placa: s.placa,
+            entrada: entrada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            salida: salida.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            total: `Q${total}`
+        });
+        servicios.splice(index, 1);
+        guardarYActualizar();
+    }
+}
+
+//=====================HISTORIAL DE SALIDAS=====================
+
+//Refencias
+let historialSalidas = JSON.parse(localStorage.getItem('historialSalidas')) || [];
 
