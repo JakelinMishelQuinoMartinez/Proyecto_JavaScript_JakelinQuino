@@ -124,6 +124,21 @@ btnRegistrarEntrada.addEventListener('click', () => {
     modalSlots.style.display = 'flex';
 });
 
+// Control dinámico de prefijos en la placa según el vehículo elegido
+selectTipo.addEventListener('change', (e) => {
+    const vehiculoSeleccionado = tarifas.find(t => t.tipo === e.target.value);
+    prefijoPlaca.innerText = vehiculoSeleccionado ? vehiculoSeleccionado.codigo : '?';
+});
+
+// Abrir formulario de registro de entrada
+function abrirRegistro(numSlot) {
+    modalSlots.style.display = 'none';
+    modalParkingForm.style.display = 'flex';
+    document.getElementById('input-slot').value = numSlot;
+    document.getElementById('titulo-registro').innerText = `Registro Slot #${numSlot}`;
+    prefijoPlaca.innerText = '?';
+}
+
 //Cancelar registro de parking
 btnCancelParking.addEventListener('click', () => {
     modalParkingForm.style.display = 'none';
