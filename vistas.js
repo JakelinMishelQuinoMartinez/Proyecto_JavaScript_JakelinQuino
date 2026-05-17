@@ -63,12 +63,39 @@ function actualizarTablaTarifas() {
                 <td>${t.tipo}</td>
                 <td>Q${t.monto}</td>
                 <td>
-                    <button onclick="eliminarTarifa(${index})" class="btn-signin" style="background:#333">Eliminar</button>
+                    <button onclick="prepararEditarTarifa(${index})" class="btn-save" style="padding: 5px 10px; font-size:0.85rem;">Editar</button>
+                    <button onclick="eliminarTarifa(${index})" class="btn-signin" style="background:#333; padding: 5px 10px; font-size:0.85rem;">Eliminar</button>
                 </td>
             </tr>
         `;
     });
 }
+
+// --- EDICIÓN DE TARIFAS ---
+function prepararEditarTarifa(index) {
+    const t = tarifas[index];
+    document.getElementById('edit-tarifa-index').value = index;
+    document.getElementById('edit-tarifa-tipo').value = t.tipo;
+    document.getElementById('edit-tarifa-codigo').value = t.codigo;
+    document.getElementById('edit-tarifa-monto').value = t.monto;
+    document.getElementById('modal-editar-tarifa').style.display = 'flex';
+}
+
+//Enviar formulario de edición de tarifa
+document.getElementById('form-editar-tarifa').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const index = document.getElementById('edit-tarifa-index').value;
+    tarifas[index].tipo = document.getElementById('edit-tarifa-tipo').value;
+    tarifas[index].codigo = document.getElementById('edit-tarifa-codigo').value.toUpperCase();
+    tarifas[index].monto = parseFloat(document.getElementById('edit-tarifa-monto').value);
+    guardarYActualizar();
+    document.getElementById('modal-editar-tarifa').style.display = 'none';
+});
+
+//Cerrar modal de edición de tarifa
+document.getElementById('btn-cancel-edit-tarifa').addEventListener('click', () => {
+    document.getElementById('modal-editar-tarifa').style.display = 'none';
+});
 
 //Cerrar modal de tarifas
 btnCancelTarifa.addEventListener("click", () => {

@@ -184,6 +184,27 @@
                 </div>
             </div>
 
+            <div id="modal-editar-tarifa" class="seccion">
+                <div class="card-content">
+                    <h3>Editar Tipo y Tarifa</h3>
+                    <form id="form-editar-tarifa">
+                        <input type="hidden" id="edit-tarifa-index"> <label class="formLabel">Tipo de Vehículo</label>
+                        <input type="text" id="edit-tarifa-tipo" class="input-app" required>
+                        
+                        <label class="formLabel">Código</label>
+                        <input type="text" id="edit-tarifa-codigo" class="input-app" maxlength="1" style="text-transform: uppercase;" required>
+                        
+                        <label class="formLabel">Tarifa por Hora (Q)</label>
+                        <input type="number" id="edit-tarifa-monto" class="input-app" required>
+                        
+                        <div class="btn-contaier">
+                            <button type="submit" class="btn-save">Actualizar</button>
+                            <button type="button" class="btn-cancel" id="btn-cancel-edit-tarifa">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <!-- ===== ESTADOS ===== -->
             <section id="modal-estados" class="contenido-blanco">
                 <h2 class="titulo-seccion">Historial de Salidas</h2>
