@@ -288,6 +288,41 @@ function actualizarTablaHistorial() {
 // ==========================================
 //    LÓGICA PARA EDICIÓN DE REGISTROS
 // ==========================================
+ 
+// --- EDICIÓN EN PARQUEO ---
+function prepararEditarParking(index) {
+    const s = servicios[index];
+    const selectEdit = document.getElementById('edit-parking-tipo');
+    selectEdit.innerHTML = '';
+    tarifas.forEach(t => {
+        selectEdit.innerHTML += `<option value="${t.tipo}">${t.tipo}</option>`;
+    });
+    document.getElementById('edit-parking-index').value = index;
+    selectEdit.value = s.tipo;
+    document.getElementById('edit-parking-placa').value = s.placa;
+    document.getElementById('edit-parking-propietario').value = s.propietario;
+    document.getElementById('modal-editar-parking').style.display = 'flex';
+}
+
+//Enviar formulario de edición de parqueo
+document.getElementById('form-editar-parking').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const index = document.getElementById('edit-parking-index').value;
+    const tipo = document.getElementById('edit-parking-tipo').value;
+    const tarifaObj = tarifas.find(t => t.tipo === tipo);
+    servicios[index].tipo = tipo;
+    servicios[index].codigo = tarifaObj.codigo;
+    servicios[index].tarifa = tarifaObj.monto;
+    servicios[index].placa = document.getElementById('edit-parking-placa').value.toUpperCase();
+    servicios[index].propietario = document.getElementById('edit-parking-propietario').value;
+    guardarYActualizar();
+    document.getElementById('modal-editar-parking').style.display = 'none';
+});
+
+//Cerrar modal de edición de parqueo
+document.getElementById('btn-cancel-edit-parking').addEventListener('click', () => {
+    document.getElementById('modal-editar-parking').style.display = 'none';
+});
 
 // --- EDICIÓN DE TARIFAS ---
 function prepararEditarTarifa(index) {
