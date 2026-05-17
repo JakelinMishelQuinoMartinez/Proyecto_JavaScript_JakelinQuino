@@ -117,7 +117,7 @@
             <div id="modal-slots" class="seccion">
                 <div class="card-content large">
                     <h3>Seleccione un slot disponible</h3>
-                    <div class="grid-slots" id="contenedor-grid"></div>
+                    <parking-grid-component></parking-grid-component>
                     <button class="btn-cancelar-modal" id="btn-cancel-slots">Cancelar</button>
                 </div>
             </div>
@@ -234,19 +234,7 @@
             <section id="modal-estados" class="contenido-blanco">
                 <h2 class="titulo-seccion">Historial de Salidas</h2>
                 <hr>
-                <div class="espacio-contenido">
-                    <table class="tabla-app" id="tabla-historial">
-                        <thead>
-                            <tr>
-                                <th>Código</th> <th>Placa</th>
-                                <th>Entrada</th>
-                                <th>Salida</th>
-                                <th>Total Pagado</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
+                <tabla-historial-component></tabla-historial-component>
             </section>
             
         </div>

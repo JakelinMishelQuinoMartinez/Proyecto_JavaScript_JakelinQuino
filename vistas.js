@@ -140,17 +140,16 @@ const TOTAL_SLOTS = 20;
 
 //Mostrar slots disponibles
 btnRegistrarEntrada.addEventListener('click', () => {
-    contenedorGrid.innerHTML = '';
+    const contenedor = document.getElementById('contenedor-grid'); 
+    contenedor.innerHTML = '';
     const slotsOcupados = servicios.map(s => parseInt(s.slot));
     for(let i = 1; i <= TOTAL_SLOTS; i++) {
         const estaOcupado = slotsOcupados.includes(i);
         const div = document.createElement('div');
         div.className = `slot ${estaOcupado ? 'ocupado' : 'libre'}`;
         div.innerText = i;
-        if(!estaOcupado) {
-            div.onclick = () => abrirRegistro(i);
-        }
-        contenedorGrid.appendChild(div);
+        if(!estaOcupado) div.onclick = () => abrirRegistro(i);
+        contenedor.appendChild(div);
     }
     modalSlots.style.display = 'flex';
 });
@@ -361,3 +360,43 @@ document.getElementById('form-editar-tarifa').addEventListener('submit', (e) => 
 document.getElementById('btn-cancel-edit-tarifa').addEventListener('click', () => {
     document.getElementById('modal-editar-tarifa').style.display = 'none';
 });
+
+// ====================WEB COMPONENT============================
+
+// Componente para la tabla de historial de salidas
+class TablaHistorialComponent extends HTMLElement {
+    constructor() {super(); }
+    connectedCallback() { this.render();}
+    render() {
+        this.innerHTML = `
+            <div class="espacio-contenido">
+                <table class="tabla-app" id="tabla-historial">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Placa</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                            <th>Total Pagado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        `;
+    }
+}
+customElements.define('tabla-historial-component', TablaHistorialComponent);
+
+// Componente para la tabla de servicios activos
+class ParkingGridComponent extends HTMLElement {
+    constructor() {super();}
+    connectedCallback() {
+        this.innerHTML = `
+            <div class="grid-slots" id="contenedor-grid">
+                </div>
+        `;
+    }
+}
+customElements.define('parking-grid-component', ParkingGridComponent);
