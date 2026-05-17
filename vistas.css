@@ -58,3 +58,27 @@
         font-size: 0.8rem;
     }
 }
+
+/*=========NUEVA TARIFA=========*/
+#form-tarifa { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: left; }
+
+#form-tarifa input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--blanco-mate);
+    border-radius: 8px;
+    outline: none;
+}
+
+#btnn-cancel {
+    background-color: var(--gris-opaco); 
+    color: var(--blanco-mate);
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
