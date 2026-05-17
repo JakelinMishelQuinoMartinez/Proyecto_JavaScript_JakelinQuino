@@ -5,6 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarTablaTarifas();
 });
 
+// --- FUNCIONES GLOBAL DE PERSISTENCIA ---
+function guardarYActualizar() {
+    localStorage.setItem('tarifas', JSON.stringify(tarifas));
+    localStorage.setItem('servicios', JSON.stringify(servicios));
+    actualizarTablaTarifas();
+    actualizarTablaServicios();
+    poblarSelectTipos();
+}
+
 //Referencias
 const btnAgregarTarifa = document.getElementById('btn-agregar-tarifa');
 const modalTarifaForm = document.getElementById('modal-tarifa-form');
@@ -144,6 +153,50 @@ btnCancelParking.addEventListener('click', () => {
     modalParkingForm.style.display = 'none';
     formParking.reset();
 });
+
+// Enviar Registro del Formulario
+formParking.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const tipo = selectTipo.value;
+    const tarifaObj = tarifas.find(t => t.tipo === tipo); 
+    const nuevoServicio = {
+        slot: document.getElementById('input-slot').value,
+        tipo: tipo,
+        codigo: tarifaObj.codigo,
+        tarifa: tarifaObj.monto,
+        placa: tarifaObj.codigo + document.getElementById('input-placa').value.toUpperCase(),
+        propietario: document.getElementById('input-propietario').value,
+        entrada: new Date().toISOString()
+    };
+    servicios.push(nuevoServicio);
+    guardarYActualizar();
+    modalParkingForm.style.display = 'none';
+    formParking.reset();
+});
+
+//Actualizar tabla de servicios activos
+function actualizarTablaServicios() {
+    const tbody = document.querySelector('#tabla-servicios tbody');
+    tbody.innerHTML = '';
+    servicios.forEach((s, index) => {
+        const horaEntrada = new Date(s.entrada).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        tbody.innerHTML += `
+            <tr>
+                <td>${s.slot}</td>
+                <td>${s.tipo}</td>
+                <td>${s.placa}</td>
+                <td>${s.propietario}</td>
+                <td>${horaEntrada}</td>
+                <td id="tiempo-${index}">0 min</td>
+                <td>
+                    <button onclick="finalizarServicio(${index})" class="btnRegistrar" style="background:var(--verde-opaco); padding: 5px 10px;">Salida</button>
+                    <button onclick="eliminarServicio(${index})" class="btn-nuevo" style="background:#333; padding: 5px 10px;">X</button>
+                </td>
+            </tr>
+        `;
+    });
+    calcularTiemposActivos();
+}
 
 //Cerrar modal de slots
 btnCerrarModalSlots.addEventListener('click', () => {
