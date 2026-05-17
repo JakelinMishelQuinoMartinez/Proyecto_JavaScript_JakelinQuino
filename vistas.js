@@ -3,14 +3,19 @@
 // --- INICIALIZACIÓN AL CARGAR LA APP ---
 document.addEventListener('DOMContentLoaded', () => {
     actualizarTablaTarifas();
+    actualizarTablaServicios();
+    actualizarTablaHistorial();
+    poblarSelectTipos();
 });
 
 // --- FUNCIONES GLOBAL DE PERSISTENCIA ---
 function guardarYActualizar() {
     localStorage.setItem('tarifas', JSON.stringify(tarifas));
     localStorage.setItem('servicios', JSON.stringify(servicios));
+    localStorage.setItem('historialSalidas', JSON.stringify(historialSalidas));
     actualizarTablaTarifas();
     actualizarTablaServicios();
+    actualizarTablaHistorial();
     poblarSelectTipos();
 }
 
@@ -31,20 +36,6 @@ let tarifas = JSON.parse(localStorage.getItem('tarifas')) || [
 //Mostrar modal para agregar tipo y tarifa
 btnAgregarTarifa.addEventListener('click', () => {
     modalTarifaForm.style.display = 'flex';
-});
-
-//Agregar nueva tarifa
-btnSaveTarifa.addEventListener('click', (e) => {
-    e.preventDefault();
-    const nuevaTarifa = {
-        codigo: tarifaCodigoInput.value.toUpperCase(),
-        tipo: tarifaTipoInput.value,
-        monto: parseFloat(tarifaMontoInput.value)
-    };
-    tarifas.push(nuevaTarifa);
-    guardarYActualizar();
-    cerrarModalsFlotantes();
-    e.target.reset();
 });
 
 //Abrir formulario de registro de tarifa
@@ -237,8 +228,31 @@ function finalizarServicio(index) {
     }
 }
 
+//Eliminar servicio sin cobrar
+function eliminarServicio(index) {
+    if(confirm("¿Deseas eliminar este registro de la tabla sin procesar cobro?")) {
+        servicios.splice(index, 1);
+        guardarYActualizar();
+    }
+}
+
 //=====================HISTORIAL DE SALIDAS=====================
 
 //Refencias
 let historialSalidas = JSON.parse(localStorage.getItem('historialSalidas')) || [];
 
+//Actualizar tabla de historial de salidas
+function actualizarTablaHistorial() {
+    const tbody = document.querySelector('#tabla-historial tbody');
+    tbody.innerHTML = '';
+    historialSalidas.forEach(h => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${h.placa}</td>
+                <td>${h.entrada}</td>
+                <td>${h.salida}</td>
+                <td><b>${h.total}</b></td>
+            </tr>
+        `;
+    });
+}
