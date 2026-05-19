@@ -46,6 +46,11 @@ formTarifa.addEventListener('submit', (e) => {
         tipo: document.getElementById('tarifa-tipo').value,
         monto: parseFloat(document.getElementById('tarifa-monto').value)
     };
+    const codigoDuplicado = tarifas.some(t => t.codigo === nuevaTarifa.codigo);
+    if (codigoDuplicado) {
+        alert(`¡Error! El código "${nuevaTarifa.codigo}" ya está asignado a otro tipo de vehículo, ingrese uno diferente.`);
+        return; 
+    }
     tarifas.push(nuevaTarifa);
     guardarYActualizar();
     modalTarifaForm.style.display = 'none';
@@ -175,6 +180,16 @@ btnCancelParking.addEventListener('click', () => {
     formParking.reset();
 });
 
+//Formateo de la placa
+const inputPlaca = document.getElementById('input-placa');
+inputPlaca.addEventListener('input', (e) => {
+    let valor = e.target.value.toUpperCase().replace(/\s+/g, '');
+    let numeros = valor.slice(0, 3).replace(/[^0-9]/g, '');
+    let letras = valor.slice(3, 6).replace(/[^A-Z]/g, '');
+    let valorFormateado = numeros + letras;
+    e.target.value = valorFormateado;
+});
+
 // Enviar Registro del Formulario
 formParking.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -189,6 +204,14 @@ formParking.addEventListener('submit', (e) => {
         propietario: document.getElementById('input-propietario').value,
         entrada: new Date().toISOString()
     };
+    const placavalidar = JSON.parse(localStorage.getItem('servicios')) || [];
+    const placaGenerada = tarifaObj.codigo + document.getElementById('input-placa').value.toUpperCase();
+    const validarPlaca = placavalidar.some(p => p.placa === placaGenerada);    
+    if (validarPlaca) {
+        alert('Ya existe un vehículo estacionado con esta placa.');
+        return;
+    }
+
     servicios.push(nuevoServicio);
     guardarYActualizar();
     modalParkingForm.style.display = 'none';
