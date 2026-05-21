@@ -43,6 +43,10 @@
                 <img class="img-svg" src="img/coin.svg" alt="Moneda"> 
                 <span class="opc text_hide">Estados</span>
             </div>
+            <div id="reportes_container" class="opcion-btn">
+                <img class="img-svg" src="img/patch-plus.svg" alt="Reporte"> 
+                <span class="opc text_hide">Reportes</span>
+            </div>
         </div>
 
         <!-- ===== INICIAR SESIÓN ===== -->
@@ -235,6 +239,42 @@
                 <h2 class="titulo-seccion">Historial de Salidas</h2>
                 <hr>
                 <tabla-historial-component></tabla-historial-component>
+            </section>
+
+            <!-- ===== REPORTES ===== -->
+            <section id="modal-reportes" class="contenido-blanco">
+                <h2 class="titulo-seccion">Reporte de Servicios</h2>
+                <div class="filtros-reporte"> 
+                    <div>
+                        <label class="formLabel">Fecha Inicial</label>
+                        <input type="date" id="reporte-fecha-inicio" class="input-app">
+                    </div>
+                    <div>
+                        <label class="formLabel">Fecha Final</label>
+                        <input type="date" id="reporte-fecha-fin" class="input-app">
+                    </div>
+                    <button class="btnRegistrar" id="btn-generar-reporte">Generar Reporte</button>
+                </div>
+
+                <div class="resumen-reporte">
+                    <div class="card-resumen card-total-vehiculos">
+                        <h4>Total Vehículos</h4>
+                        <span id="reporte-total-vehiculos">0</span>
+                    </div>
+                    <div class="card-resumen card-total-monto">
+                        <h4>Total Valor Captado</h4>
+                        <span id="reporte-total-monto">Q0</span>
+                    </div>
+                </div>
+
+                <div class="espacio-contenido">
+                    <table class="tabla-app" id="tabla-reporte-detalle">
+                        <thead>
+                            <tr><th>Placa</th><th>Tipo</th><th>Horas</th><th>Valor</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </section>
             
         </div>

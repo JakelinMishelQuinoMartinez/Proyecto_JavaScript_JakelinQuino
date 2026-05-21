@@ -201,3 +201,37 @@
 .svg-rojo {
     filter: invert(15%) sepia(95%) saturate(3932%) hue-rotate(346deg) brightness(50%) contrast(92%);
 }
+
+/*====================REPORTES==================*/
+.filtros-reporte {
+    display: flex;
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filtros-reporte .input-app {
+    margin-bottom: 0;
+}
+
+.resumen-reporte {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card-resumen {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--blanco-mate);
+}
+
+.card-total-vehiculos { background: var(--gris-opaco); }
+.card-total-monto { background: var(--verde-opaco); }
+
+.card-resumen h4 { margin-bottom: 10px; }
+.card-resumen span { font-size: 1.5rem; font-weight: bold; }

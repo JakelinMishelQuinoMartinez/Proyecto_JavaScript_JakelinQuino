@@ -280,8 +280,12 @@ function finalizarServicio(index) {
         historialSalidas.push({
             codigo: s.codigo,
             placa: s.placa,
+            tipo: s.tipo,
+            horas: diffHoras,
+            fechaTecnica: salida.toISOString(),
             entrada: entrada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
             salida: salida.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            montoNum: total,
             total: `Q${total}`
         });
         servicios.splice(index, 1);

@@ -112,7 +112,7 @@ body{background-color: var(--gris-claro);}
     padding: 20px 0;
 }
 
-#servicescontainer, #types_container, #status_container{
+#servicescontainer, #types_container, #status_container, #reportes_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,8 +138,8 @@ body{background-color: var(--gris-claro);}
 }
 
 @media (max-width:700px){
-    #servicescontainer, #types_container, #status_container{
-        padding: 10px 40px;
+    #servicescontainer, #types_container, #status_container, #reportes_container {
+        padding: 10px 30px;
     }
     .menu-opciones{gap: 10px;}
 }

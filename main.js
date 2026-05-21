@@ -99,6 +99,7 @@ profileForm.addEventListener("submit", (e) => {
 const btnServicios = document.getElementById("servicescontainer");
 const btnTipos = document.getElementById("types_container");
 const btnEstados = document.getElementById("status_container");
+const btnReportes = document.getElementById("reportes_container");
 const todasLasVistas = document.querySelectorAll(".contenido-blanco");
 
 //Ocultar o mostrar modals
@@ -111,3 +112,4 @@ function cambiarVista(idSeleccionado) {
 btnServicios.addEventListener("click", () => cambiarVista("modal-servicios"));
 btnTipos.addEventListener("click", () => cambiarVista("modal-tipos"));
 btnEstados.addEventListener("click", () => cambiarVista("modal-estados"));
+btnReportes.addEventListener("click", () => cambiarVista("modal-reportes"));
