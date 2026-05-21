@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarTablaServicios();
     actualizarTablaHistorial();
     poblarSelectTipos();
+    inicializarReportes();
 });
 
 // --- FUNCIONES GLOBAL DE PERSISTENCIA ---
@@ -387,6 +388,43 @@ document.getElementById('form-editar-tarifa').addEventListener('submit', (e) => 
 document.getElementById('btn-cancel-edit-tarifa').addEventListener('click', () => {
     document.getElementById('modal-editar-tarifa').style.display = 'none';
 });
+
+// --- LÓGICA DE REPORTES ---
+function inicializarReportes() {
+    const btnGenerarReporte = document.getElementById('btn-generar-reporte');
+    if (!btnGenerarReporte) return;
+    btnGenerarReporte.addEventListener('click', () => {
+        const fechaInicio = document.getElementById('reporte-fecha-inicio').value;
+        const fechaFin = document.getElementById('reporte-fecha-fin').value;
+        if (!fechaInicio || !fechaFin) {
+            alert("Por favor seleccione un rango de fechas completo.");
+            return;
+        }
+        // Filtrar historial por rango (YYYY-MM-DD)
+        const filtrados = historialSalidas.filter(h => {
+            if (!h.fechaTecnica) return false;
+            const fSalida = h.fechaTecnica.split('T')[0];
+            return fSalida >= fechaInicio && fSalida <= fechaFin;
+        });
+        // Cálculos de resumen
+        const totalVehiculos = filtrados.length;
+        const totalMonto = filtrados.reduce((acc, h) => acc + (h.montoNum || 0), 0);
+        // Actualizar UI
+        document.getElementById('reporte-total-vehiculos').innerText = totalVehiculos;
+        document.getElementById('reporte-total-monto').innerText = `Q${totalMonto}`;
+        const tbodyReporte = document.querySelector('#tabla-reporte-detalle tbody');
+        if (tbodyReporte) {
+            tbodyReporte.innerHTML = filtrados.map(h => `
+                <tr>
+                    <td>${h.placa}</td>
+                    <td>${h.tipo}</td>
+                    <td>${h.horas || 1}</td>
+                    <td><b>${h.total}</b></td>
+                </tr>
+            `).join('');
+        }
+    });
+}
 
 // ====================WEB COMPONENT============================
 
